@@ -1,0 +1,10 @@
+{
+  "name": "logan",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": "git@github.com:KaiserPhemi/logan.git",
+  "author": "KaiserPhemi <kaiser.phemi@protonmail.ch>",
+  "license": "MIT"
+}
