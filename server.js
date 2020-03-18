@@ -1,6 +1,8 @@
 // node modules
 require("dotenv").config();
 const express = require("express");
+const path = require("path");
+const { MongoClient } = require("mongodb");
 
 // router
 const mainRouter = require("./server/api/v1");
@@ -8,17 +10,42 @@ const mainRouter = require("./server/api/v1");
 // instantiate app & decalre constants
 const app = express();
 const port = parseInt(process.env.PORT, 10);
+// const dbUrl = process.env.DEV_DB;
 
 // middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// database connedction
+// const dbConn = async () => {
+//   const client = MongoClient(dbUrl, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+//   });
+//   try {
+//     await client.connect();
+//     await client.db().admin();
+
+//     // Make the appropriate DB calls
+//     // await listDatabases(client);
+//   } catch (err) {
+//     console.error(err);
+//   } finally {
+//     await client.close();
+//   }
+// };
+// dbConn().catch(console.error);
+
 // default route
 app.use("/api/v1", mainRouter);
 app.get("/", (req, res) => {
-  res.status(200).send({
-    message: "App running"
+  if (process.env.NODE_ENV === "production") {
+    return res.sendFile(path.join(__dirname, "dist", "index.html"));
+  }
+  return res.status(200).send({
+    message: "Logan app running"
   });
 });
 
+// start app
 app.listen(port, () => console.log(`Server running on port ${port}...`));

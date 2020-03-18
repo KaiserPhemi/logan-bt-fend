@@ -13,8 +13,8 @@ const Login = () => {
    */
   const submitForm = event => {
     event.preventDefault();
-    console.log("we got here", event.target);
   };
+
   const btnTxt = "Login";
   return (
     <form onSubmit={submitForm} className="login-form">

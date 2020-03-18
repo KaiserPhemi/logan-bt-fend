@@ -4,7 +4,7 @@
   "scripts": {
     "build": "NODE_ENV=production webpack",
     "start": "NODE_ENV=production node server.js",
-    "dev": "NODE_ENV=development webpack-dev-server src/index.jsx & nodemon --watch server server.js"
+    "dev": "NODE_ENV=development webpack-dev-server src/index.jsx & nodemon --watch server/ server.js"
   },
   "repository": "git@github.com:KaiserPhemi/logan.git",
   "author": "KaiserPhemi <kaiser.phemi@protonmail.ch>",
@@ -13,6 +13,7 @@
     "babel-polyfill": "^6.26.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mongodb": "^3.5.5",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
   },
