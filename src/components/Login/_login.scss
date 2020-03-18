@@ -10,19 +10,16 @@
 
   .input-field {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     margin: 10px 0;
-    width: 30rem;
+    width: 60%;
 
     input {
       border: 1px solid #ddd;
       border-radius: 4px;
       font-size: inherit;
-
       height: 2rem;
       padding: 5px;
-      width: 16rem;
       outline: none;
     }
   }
@@ -33,17 +30,28 @@
     border-radius: 4px;
     color: #fff;
     cursor: pointer;
+    display: block;
     font-size: 1rem;
     font-weight: 500;
     height: 3rem;
-    margin: 10px 5px;
+    margin: 10px 0;
     outline: none;
     text-align: center;
-    width: 16rem;
+    width: 60%;
 
     &:hover {
       background-color: #0e7385;
       box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .login-form {
+    width: 80%;
+
+    .input-field {
+      width: 80%;
     }
   }
 }

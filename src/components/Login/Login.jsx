@@ -15,19 +15,20 @@ const Login = () => {
     event.preventDefault();
     console.log("we got here", event.target);
   };
-
+  const btnTxt = "Login";
   return (
     <form onSubmit={submitForm} className="login-form">
       <div className="input-field">
-        <span>Email</span>
+        <label htmlFor="email">Email</label>
         <input name="email" type="email" />
       </div>
       <div className="input-field">
         <label htmlFor="password">Password</label>
         <input name="password" type="password" />
       </div>
+
       <button className="submit-btn" type="submit">
-        Submit
+        {btnTxt}
       </button>
     </form>
   );
