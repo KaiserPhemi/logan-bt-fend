@@ -2,4 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-ReactDOM.render(<h1>Welcome</h1>, document.getElementById("logan-app"));
+// components
+import App from "./components/App/App";
+
+ReactDOM.render(<App />, document.getElementById("logan-app"));

@@ -1,15 +1,19 @@
 // node modules
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const WebpackMd5Hash = require("webpack-md5-hash");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const devMode = process.env.NODE_ENV !== "production";
+// check node environment
+const devMode = process.env.NODE_ENV === "production";
 
+// configurations
 module.exports = {
-  entry: { app: "./src/index.js" },
+  mode: devMode ? "production" : "development",
+  entry: { app: "./src/index.jsx" },
+  devtool: devMode ? false : "cheap-source-map",
   output: {
     filename: "[name].[contenthash:8].js",
+    chunkFilename: "[name].[contenthash:8].js",
     path: path.resolve(__dirname, "dist")
   },
   module: {
@@ -31,8 +35,7 @@ module.exports = {
       template: "./src/index.html",
       hash: true
     }),
-    new MiniCssExtractPlugin({ filename: "[name]-[contenthash:8].css" }),
-    new WebpackMd5Hash()
+    new MiniCssExtractPlugin({ filename: "[name]-[contenthash:8].css" })
   ],
   resolve: {
     extensions: [".jsx", ".js", ".json"]
