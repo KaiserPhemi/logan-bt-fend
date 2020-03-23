@@ -16,6 +16,9 @@ const port = parseInt(process.env.PORT, 10);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// static file path
+app.use(express.static(path.join(__dirname, "dist")));
+
 // database connedction
 // const dbConn = async () => {
 //   const client = MongoClient(dbUrl, {
@@ -36,7 +39,7 @@ app.use(express.json());
 // };
 // dbConn().catch(console.error);
 
-// default route
+// default routes
 app.use("/api/v1", mainRouter);
 app.get("/", (req, res) => {
   if (process.env.NODE_ENV === "production") {

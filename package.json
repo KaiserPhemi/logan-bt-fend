@@ -2,7 +2,7 @@
   "name": "logan",
   "version": "1.0.0",
   "scripts": {
-    "build": "NODE_ENV=production webpack",
+    "build": "rm -rf dist & NODE_ENV=production webpack --mode production",
     "start": "NODE_ENV=production node server.js",
     "dev": "NODE_ENV=development webpack-dev-server src/index.jsx & nodemon --watch server/ server.js"
   },
@@ -22,6 +22,7 @@
     "@babel/core": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
+    "@testing-library/react": "^10.0.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "css-loader": "^3.4.2",

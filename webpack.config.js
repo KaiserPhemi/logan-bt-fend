@@ -4,16 +4,15 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // check node environment
-const devMode = process.env.NODE_ENV === "production";
+const prodMode = process.env.NODE_ENV === "production";
 
 // configurations
 module.exports = {
-  mode: devMode ? "production" : "development",
+  mode: prodMode ? "production" : "development",
   entry: { app: "./src/index.jsx" },
-  devtool: devMode ? false : "cheap-source-map",
+  devtool: prodMode ? false : "cheap-source-map",
   output: {
-    filename: "[name].[contenthash:8].js",
-    chunkFilename: "[name].[contenthash:8].js",
+    filename: prodMode ? "[name].[contenthash:8].min.js" : "[name].js",
     path: path.resolve(__dirname, "dist")
   },
   module: {
@@ -35,7 +34,9 @@ module.exports = {
       template: "./src/index.html",
       hash: true
     }),
-    new MiniCssExtractPlugin({ filename: "[name]-[contenthash:8].css" })
+    new MiniCssExtractPlugin({
+      filename: prodMode ? "[name].[contenthash:8].css" : "[name].css"
+    })
   ],
   resolve: {
     extensions: [".jsx", ".js", ".json"]
