@@ -4,7 +4,7 @@
   "scripts": {
     "build": "rm -rf dist & NODE_ENV=production webpack --mode production",
     "start": "NODE_ENV=production node server.js",
-    "dev": "NODE_ENV=development webpack-dev-server src/index.jsx & nodemon --watch server/ server.js"
+    "dev": "NODE_ENV=development webpack-dev-server src/index.jsx & nodemon --watch app server.js"
   },
   "repository": "git@github.com:KaiserPhemi/logan.git",
   "author": "KaiserPhemi <kaiser.phemi@protonmail.ch>",

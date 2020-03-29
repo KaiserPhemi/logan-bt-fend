@@ -5,12 +5,12 @@ const path = require("path");
 const { MongoClient } = require("mongodb");
 
 // router
-const mainRouter = require("./server/api/v1");
+const mainRouter = require("./app/api/v1");
 
 // instantiate app & decalre constants
 const app = express();
 const port = parseInt(process.env.PORT, 10);
-// const dbUrl = process.env.DEV_DB;
+const dbUrl = process.env.DEV_DB;
 
 // middlewares
 app.use(express.urlencoded({ extended: true }));
@@ -20,24 +20,24 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "dist")));
 
 // database connedction
-// const dbConn = async () => {
-//   const client = MongoClient(dbUrl, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-//   });
-//   try {
-//     await client.connect();
-//     await client.db().admin();
+const dbConn = async () => {
+  const client = MongoClient(dbUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
+  try {
+    await client.connect(() => console.log("Database connected"));
+    await client.db().admin();
 
-//     // Make the appropriate DB calls
-//     // await listDatabases(client);
-//   } catch (err) {
-//     console.error(err);
-//   } finally {
-//     await client.close();
-//   }
-// };
-// dbConn().catch(console.error);
+    // Make the appropriate DB calls
+    // await listDatabases(client);
+  } catch (err) {
+    console.error(err);
+  } finally {
+    await client.close();
+  }
+};
+dbConn().catch(console.error);
 
 // default routes
 app.use("/api/v1", mainRouter);
