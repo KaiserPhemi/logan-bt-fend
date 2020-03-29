@@ -8,6 +8,8 @@ const userController = {
    * @param {object} res
    */
   async createUser(req, res) {
+    const { body } = req;
+    console.log(body);
     return res.status(200).send({
       message: "User Created"
     });
