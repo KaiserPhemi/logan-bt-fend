@@ -1,8 +1,14 @@
-// node modules
+// libraries
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const { MongoClient } = require("mongodb");
+const mongoose = require("mongoose");
+
+// database url
+const dbUrl =
+  process.env.NODE_ENV === "production"
+    ? process.env.PROD_DB
+    : process.env.DEV_DB;
 
 // router
 const mainRouter = require("./app/api/v1");
@@ -10,7 +16,6 @@ const mainRouter = require("./app/api/v1");
 // instantiate app & decalre constants
 const app = express();
 const port = parseInt(process.env.PORT, 10);
-const dbUrl = process.env.DEV_DB;
 
 // middlewares
 app.use(express.urlencoded({ extended: true }));
@@ -19,25 +24,18 @@ app.use(express.json());
 // static file path
 app.use(express.static(path.join(__dirname, "dist")));
 
-// database connedction
-const dbConn = async () => {
-  const client = MongoClient(dbUrl, {
+// database connection
+mongoose.connect(
+  dbUrl,
+  {
     useNewUrlParser: true,
     useUnifiedTopology: true
-  });
-  try {
-    await client.connect(() => console.log("Database connected"));
-    await client.db().admin();
-
-    // Make the appropriate DB calls
-    // await listDatabases(client);
-  } catch (err) {
-    console.error(err);
-  } finally {
-    await client.close();
+  },
+  err => {
+    if (err) console.log(err);
+    console.log("database connected...");
   }
-};
-dbConn().catch(console.error);
+);
 
 // default routes
 app.use("/api/v1", mainRouter);
