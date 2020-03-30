@@ -17,6 +17,8 @@ const userController = {
   async createUser(req, res) {
     const { body } = req;
     const signUpData = await userSignUpSchema.validate({ ...body });
+
+    // checks for error in data validation
     if (signUpData.error) {
       const { error } = signUpData;
       const details = error.details[0].message;
@@ -26,6 +28,14 @@ const userController = {
       });
     }
     const { value } = signUpData;
+    const existingUser = await User.findOne({ email: value.email });
+
+    // checks if user exist already
+    if (existingUser) {
+      return res.status(400).send({
+        message: `User with email '${existingUser.email}' already exist.`
+      });
+    }
     const hashedPwd = await hashPassword(value.password);
     const userData = { ...value, password: hashedPwd };
     try {
@@ -56,11 +66,45 @@ const userController = {
       });
     } catch (error) {
       return res.status(500).send({
-        message: "An error occured",
+        message: "An error occured.",
         error
       });
     }
-  }
+  },
+
+  /**
+   * @desc updates a user details
+   * @param {object} req
+   * @param {object} res
+   */
+  async updateUser(req, res) {
+    const { id } = req.params;
+    const { body } = req;
+    try {
+      const updatedUser = await User.findByIdAndUpdate(id, body, { new: true });
+      if (!updatedUser) {
+        return res.status(404).send({
+          message: "User with the details does not exist"
+        });
+      }
+      return res.status(201).send({
+        message: "User details updated",
+        user: updatedUser
+      });
+    } catch (error) {
+      return res.status(500).send({
+        message: "User details not updated.",
+        error
+      });
+    }
+  },
+
+  /**
+   * @desc
+   * @param {object} req
+   * @param {object} res
+   */
+  async deleteUser(req, res) {}
 };
 
 module.exports = userController;
