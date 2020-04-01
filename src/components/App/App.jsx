@@ -6,6 +6,7 @@ import "./app.scss";
 
 // components
 import Login from "../Login/Login";
+import NavigationBar from "../NavigationBar/NavigationBar";
 
 /**
  * @desc entry point for app
@@ -13,6 +14,7 @@ import Login from "../Login/Login";
 const App = () => {
   return (
     <div className="app-container">
+      <NavigationBar />
       <Login />
     </div>
   );
