@@ -8,6 +8,7 @@ import "./app.scss";
 import Login from "../Login/Login";
 import NavigationBar from "../NavigationBar/NavigationBar";
 import Footer from "../Footer/Footer";
+import MainPage from "../MainPage/MainPage";
 
 /**
  * @desc entry point for app
@@ -16,7 +17,7 @@ const App = () => {
   return (
     <div className="app-container">
       <NavigationBar />
-      <Login />
+      <MainPage />
       <Footer />
     </div>
   );

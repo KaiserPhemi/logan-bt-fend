@@ -3,13 +3,14 @@
   display: flex;
   justify-content: space-between;
   font-size: 12px;
+  padding: 0 20px;
 
   .footer-menu-list {
     display: flex;
+    justify-content: space-evenly;
 
     .footer-menu-item {
       list-style: none;
-      padding: 0 20px;
 
       a {
         text-decoration: none;

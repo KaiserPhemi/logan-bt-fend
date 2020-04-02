@@ -9,7 +9,7 @@ const prodMode = process.env.NODE_ENV === "production";
 // configurations
 module.exports = {
   mode: prodMode ? "production" : "development",
-  entry: { app: "./src/index.jsx" },
+  entry: { app: "./src/index.js" },
   devtool: prodMode ? false : "cheap-source-map",
   output: {
     filename: prodMode ? "[name].[contenthash:8].min.js" : "[name].js",
