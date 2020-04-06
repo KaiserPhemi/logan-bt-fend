@@ -10,7 +10,7 @@ const bugController = {
   async createBug(req, res) {
     console.log("");
     return res.status(200).send({
-      message: "All organization retrieved"
+      message: "Bug created"
     });
   },
 
@@ -30,7 +30,7 @@ const bugController = {
    */
   async getBugs(req, res) {
     return res.status(200).send({
-      message: "All organization retrieved"
+      message: "All Bugs retrieved"
     });
   },
 
