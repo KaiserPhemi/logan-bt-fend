@@ -1,5 +1,6 @@
 // react libraries
 import React from "react";
+import { Link, Redirect, Route } from "react-router-dom";
 
 // styles
 import "./_navbar.scss";
@@ -24,19 +25,23 @@ const NavigationBar = () => {
   return (
     <header className="main-header">
       <div className="img-container app-logo">
-        <img
-          src="/assets/img/icon_60.png"
-          alt="app_logo"
-          className="img-wrapper"
-        />
+        <Link to="/">
+          <img
+            src="/assets/img/icon_60.png"
+            alt="app_logo"
+            className="img-wrapper"
+          />
+        </Link>
       </div>
       <nav className="navbar-menu">
         <ul className="menu-list">
           <li className="menu-item">
-            <a href="#">Sign in</a>
+            <Link to="/login">Sign in</Link>
           </li>
           <li onClick={signUp} className="menu-item">
-            <Button btnText={defText} />
+            <Link to="/register">
+              <Button btnText={defText} />
+            </Link>
           </li>
         </ul>
         {isLoggedIn ? (

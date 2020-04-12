@@ -1,5 +1,6 @@
 // react libraries
 import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // styles
 import "./app.scss";
@@ -8,18 +9,24 @@ import "./app.scss";
 import Login from "../Login/Login";
 import NavigationBar from "../NavigationBar/NavigationBar";
 import Footer from "../Footer/Footer";
-import MainPage from "../MainPage/MainPage";
+import LandingPage from "../LandingPage/LandingPage";
 
 /**
  * @desc entry point for app
  */
 const App = () => {
   return (
-    <div className="app-container">
-      <NavigationBar />
-      <MainPage />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="app-container">
+        <NavigationBar />
+        <Switch>
+          <Route exact path="/" component={LandingPage} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Login} />
+        </Switch>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 };
 
