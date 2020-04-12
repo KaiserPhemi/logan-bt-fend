@@ -10,6 +10,7 @@ import Login from "../Login/Login";
 import NavigationBar from "../NavigationBar/NavigationBar";
 import Footer from "../Footer/Footer";
 import LandingPage from "../LandingPage/LandingPage";
+import Register from "../Register/Register";
 
 /**
  * @desc entry point for app
@@ -22,7 +23,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route path="/login" component={Login} />
-          <Route path="/register" component={Login} />
+          <Route path="/register" component={Register} />
         </Switch>
         <Footer />
       </div>
