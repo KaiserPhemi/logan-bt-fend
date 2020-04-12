@@ -6,6 +6,7 @@ import "./_main-page.scss";
 
 // components
 import Login from "../Login/Login";
+import LandingPage from "../LandingPage/LandingPage";
 
 /**
  * @desc
@@ -13,7 +14,8 @@ import Login from "../Login/Login";
 const MainPage = () => {
   return (
     <div className="main-page">
-      <Login />
+      <LandingPage />
+      {/* <Login /> */}
     </div>
   );
 };

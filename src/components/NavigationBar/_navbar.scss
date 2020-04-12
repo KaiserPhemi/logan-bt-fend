@@ -1,13 +1,16 @@
 .main-header {
+  background-color: white;
+  border-bottom: 1px solid #ddd;
   display: flex;
   justify-content: space-between;
-  align-content: center;
-  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  width: 100vw;
 
   .img-container {
     cursor: pointer;
-    width: 40px;
     border-radius: 50%;
+    margin-left: 20px;
     text-overflow: clip;
   }
 
@@ -16,6 +19,7 @@
 
   .navbar-menu {
     display: flex;
+    padding: 0 20px;
 
     .menu-list {
       display: flex;
@@ -43,8 +47,7 @@
   }
 
   .img-wrapper {
-    width: 100%;
-    height: 100%;
+    border-radius: 50%;
     object-fit: contain;
   }
 }
