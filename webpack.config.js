@@ -31,8 +31,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      favicon: "./assets/img/favicon.png",
+      hash: true,
       template: "./src/index.html",
-      hash: true
     }),
     new MiniCssExtractPlugin({
       filename: prodMode ? "[name].[contenthash:8].css" : "[name].css"

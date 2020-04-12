@@ -1,0 +1,16 @@
+.default_btn {
+  border: none;
+  border-radius: 4px;
+  background-color: #001;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  height: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  width: 6rem;
+
+  &:focus {
+    outline: none;
+  }
+}
