@@ -9,10 +9,19 @@ import "./_login.scss";
  */
 const Login = () => {
   /**
-   * @desc handles submission
+   * @desc handles form submission
    */
-  const submitForm = event => {
+  const submitForm = async (event) => {
     event.preventDefault();
+    let resp = await fetch("http://localhost:5555/api/v1/auth", {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: { name: "kinwa", password: "femi" },
+    });
+    console.log("respi", resp);
   };
 
   const btnTxt = "Login";
@@ -20,11 +29,11 @@ const Login = () => {
     <form onSubmit={submitForm} className="login-form">
       <div className="input-field">
         <label htmlFor="email">Email</label>
-        <input name="email" type="email" />
+        <input name="email" type="email" required />
       </div>
       <div className="input-field">
         <label htmlFor="password">Password</label>
-        <input name="password" type="password" />
+        <input name="password" type="password" required />
       </div>
 
       <button className="submit-btn" type="submit">

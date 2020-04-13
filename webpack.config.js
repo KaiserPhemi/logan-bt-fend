@@ -1,4 +1,5 @@
 // node modules
+// require("babel-polyfill");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -13,21 +14,21 @@ module.exports = {
   devtool: prodMode ? false : "cheap-source-map",
   output: {
     filename: prodMode ? "[name].[contenthash:8].min.js" : "[name].js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "dist"),
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: { loader: "babel-loader" }
+        use: { loader: "babel-loader" },
       },
       {
         test: /\.(sa|sc|c)ss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
-      { test: /\.(jpe?g|png|gif|ico)$/i, loader: "file?name=[name].[ext]" }
-    ]
+      { test: /\.(jpe?g|png|gif|ico)$/i, loader: "file?name=[name].[ext]" },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -36,10 +37,10 @@ module.exports = {
       template: "./src/index.html",
     }),
     new MiniCssExtractPlugin({
-      filename: prodMode ? "[name].[contenthash:8].css" : "[name].css"
-    })
+      filename: prodMode ? "[name].[contenthash:8].css" : "[name].css",
+    }),
   ],
   resolve: {
-    extensions: [".jsx", ".js", ".json"]
-  }
+    extensions: [".jsx", ".js", ".json"],
+  },
 };
