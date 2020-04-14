@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 // database url
 const dbUrl =
   process.env.NODE_ENV === "production"
-    ? process.env.PROD_DB
+    ? process.env.MONGODB_URI
     : process.env.DEV_DB;
 
 // router
@@ -30,9 +30,9 @@ mongoose.connect(
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false
+    useFindAndModify: false,
   },
-  err => {
+  (err) => {
     if (err) console.log(err);
     console.log("database connected...");
   }
@@ -45,7 +45,7 @@ app.get("/", (req, res) => {
     return res.sendFile(path.join(__dirname, "dist", "index.html"));
   }
   return res.status(200).send({
-    message: "Logan app running"
+    message: "Logan app running",
   });
 });
 

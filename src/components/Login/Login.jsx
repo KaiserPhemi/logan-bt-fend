@@ -38,7 +38,6 @@ const Login = () => {
         <label htmlFor="password">Password</label>
         <input name="password" type="password" required />
       </div>
-
       <Button btnText="login" />
     </form>
   );
