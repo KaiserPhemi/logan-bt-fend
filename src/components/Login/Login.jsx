@@ -4,6 +4,9 @@ import React from "react";
 // styles
 import "./_login.scss";
 
+// components
+import Button from "../Common/Button";
+
 /**
  * @desc displays a login page
  */
@@ -36,9 +39,7 @@ const Login = () => {
         <input name="password" type="password" required />
       </div>
 
-      <button className="submit-btn" type="submit">
-        {btnTxt}
-      </button>
+      <Button btnText="login" />
     </form>
   );
 };

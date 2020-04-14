@@ -18,7 +18,7 @@ const LandingPage = () => {
         <h1>Bug tracking done right</h1>
         <p>
           Capture, track and resolve bugs & issues throughout your entire
-          development
+          development process.
         </p>
         <Link to="/register">
           <Button btnText="learn more" />

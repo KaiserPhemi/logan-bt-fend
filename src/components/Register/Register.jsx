@@ -13,6 +13,18 @@ const Register = () => {
       <label htmlFor="email">
         <input type="email" placeholder="Enter your email add" />
       </label>
+      <label htmlFor="">
+        <input type="text" />
+      </label>
+      <label htmlFor="">
+        <input type="text" />
+      </label>
+      <label htmlFor="">
+        <input type="text" />
+      </label>
+      <label htmlFor="">
+        <input type="text" />
+      </label>
     </form>
   );
 };
