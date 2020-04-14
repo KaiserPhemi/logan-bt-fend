@@ -8,9 +8,8 @@ const bugController = {
    * @param {object} res
    */
   async createBug(req, res) {
-    console.log("");
     return res.status(200).send({
-      message: "Bug created"
+      message: "Bug created",
     });
   },
 
@@ -30,7 +29,7 @@ const bugController = {
    */
   async getBugs(req, res) {
     return res.status(200).send({
-      message: "All Bugs retrieved"
+      message: "All Bugs retrieved",
     });
   },
 
@@ -41,7 +40,7 @@ const bugController = {
    */
   async deleteBug(req, res) {
     return true;
-  }
+  },
 };
 
 module.exports = bugController;

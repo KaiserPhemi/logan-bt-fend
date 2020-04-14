@@ -17,11 +17,11 @@ const NavigationBar = () => {
    * @param {object} evt
    */
   const signUp = (evt) => {
-    console.log("we got here", evt);
+    evt.preventDefault();
   };
 
   const isLoggedIn = false;
-  const defText = "get started";
+
   return (
     <header className="main-header">
       <div className="img-container app-logo">
@@ -40,7 +40,7 @@ const NavigationBar = () => {
           </li>
           <li onClick={signUp} className="menu-item">
             <Link to="/register">
-              <Button btnText={defText} />
+              <Button btnText="get started" />
             </Link>
           </li>
         </ul>

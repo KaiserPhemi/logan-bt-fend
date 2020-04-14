@@ -5,7 +5,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 
 // database url
-const dbUrl =
+const dbUri =
   process.env.NODE_ENV === "production"
     ? process.env.MONGODB_URI
     : process.env.DEV_DB;
@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, "dist")));
 
 // database connection
 mongoose.connect(
-  dbUrl,
+  dbUri,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -34,7 +34,7 @@ mongoose.connect(
   },
   (err) => {
     if (err) console.log(err);
-    console.log("database connected...");
+    console.log("Database connected...");
   }
 );
 

@@ -16,18 +16,7 @@ const Login = () => {
    */
   const submitForm = async (event) => {
     event.preventDefault();
-    let resp = await fetch("http://localhost:5555/api/v1/auth", {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: { name: "kinwa", password: "femi" },
-    });
-    console.log("respi", resp);
   };
-
-  const btnTxt = "Login";
   return (
     <form onSubmit={submitForm} className="login-form">
       <div className="input-field">

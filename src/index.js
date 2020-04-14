@@ -14,8 +14,6 @@ import store from "./store";
 // components
 import App from "./components/App/App";
 
-console.log("The Store:", store);
-
 ReactDOM.render(
   <Provider store={store}>
     <App />
