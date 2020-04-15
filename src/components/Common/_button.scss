@@ -1,7 +1,7 @@
 .default_btn {
   border: none;
   border-radius: 4px;
-  background-color: #001;
+  background-color: #222831;
   color: #fff;
   cursor: pointer;
   font-weight: 500;
@@ -12,5 +12,9 @@
 
   &:focus {
     outline: none;
+  }
+
+  &:hover {
+    background-color: #30475e;
   }
 }

@@ -6,6 +6,7 @@ import "./_login.scss";
 
 // components
 import Button from "../Common/Button";
+import Input from "../Common/Input";
 
 /**
  * @desc displays a login page
@@ -19,14 +20,8 @@ const Login = () => {
   };
   return (
     <form onSubmit={submitForm} className="login-form">
-      <div className="input-field">
-        <label htmlFor="email">Email</label>
-        <input name="email" type="email" required />
-      </div>
-      <div className="input-field">
-        <label htmlFor="password">Password</label>
-        <input name="password" type="password" required />
-      </div>
+      <Input labelText="Email" inputType="email" inputName="email" />
+      <Input labelText="Password" inputType="password" inputName="password" />
       <Button btnText="login" />
     </form>
   );

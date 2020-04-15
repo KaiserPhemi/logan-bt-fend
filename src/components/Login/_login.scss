@@ -9,22 +9,6 @@
   padding: 40px;
   width: 30vw;
 
-  .input-field {
-    display: flex;
-    flex-direction: column;
-    margin: 10px 0;
-    width: 60%;
-
-    input {
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: inherit;
-      height: 2rem;
-      padding: 5px;
-      outline: none;
-    }
-  }
-
   .submit-btn {
     background-color: #00a8cc;
     border: none;
