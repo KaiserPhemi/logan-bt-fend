@@ -1,6 +1,6 @@
 // react libraries
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // styles
 import "./app.scss";
@@ -17,7 +17,7 @@ import Register from "../Register/Register";
  */
 const App = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <div className="app-container">
         <NavigationBar />
         <Switch>
@@ -27,7 +27,7 @@ const App = () => {
         </Switch>
         <Footer />
       </div>
-    </BrowserRouter>
+    </Router>
   );
 };
 

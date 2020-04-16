@@ -18,6 +18,14 @@ const app = express();
 const port = parseInt(process.env.PORT, 10);
 
 // middlewares
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -40,7 +48,7 @@ mongoose.connect(
 
 // default routes
 app.use("/api/v1", mainRouter);
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
   if (process.env.NODE_ENV === "production") {
     return res.sendFile(path.join(__dirname, "dist", "index.html"));
   }

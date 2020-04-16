@@ -1,6 +1,5 @@
 // react libraries
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 // styles
 import "./_register.scss";
@@ -18,17 +17,22 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleInputValue = (evt) => {
-    evt.preventDefault();
-    console.log("the state", this.state);
-  };
-
+  /**
+   * @desc handles submission of form
+   * @param {object} evt
+   */
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const signUpData = { firstName, lastName, email, password };
-    console.log("the state", signUpData);
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPassword("");
   };
 
+  /**
+   * @desc renders component
+   */
   return (
     <form onSubmit={handleSubmit} className="signup-form">
       <Input
