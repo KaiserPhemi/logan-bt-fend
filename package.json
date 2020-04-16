@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "test": "jest",
+    "coverage": "coveralls",
     "build": "rm -rf dist & NODE_ENV=production webpack --mode production",
     "start": "NODE_ENV=production node server.js",
     "dev": "NODE_ENV=development webpack-dev-server src/index.js & nodemon --watch app server.js"
@@ -36,6 +37,7 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "copy-webpack-plugin": "^5.1.1",
+    "coveralls": "^3.0.11",
     "css-loader": "^3.4.2",
     "eslint-loader": "^3.0.3",
     "extract-loader": "^5.0.1",
