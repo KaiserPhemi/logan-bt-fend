@@ -1,4 +1,4 @@
-import "@testing-library/jest-dom";
+import "@testing-library/jest-dom/extend-expect";
 // import { render, fireEvent, screen } from "@testing-library/react";
 
 // react libraries
@@ -9,9 +9,8 @@ import ReactDOM from "react-dom";
 import Button from "../Button";
 
 // test suite
-test("Renders the input field", () => {
-  const div = document.createElement("div");
-  const btnText = "Hello";
-  ReactDOM.render(<Button />, div);
-  expect(div.querySelector("button")).toHaveTextContent(btnText);
+test("Renders the button", () => {
+  const container = document.createElement("div");
+  ReactDOM.render(<Button btnText={""} />, container);
+  expect(container.querySelector("button")).toHaveClass("default_btn");
 });
