@@ -1,7 +1,7 @@
 // react libraries
 import React, { useState } from "react";
 
-// other libraries
+// third-party libraries libraries
 import http from "axios";
 
 // styles
@@ -11,8 +11,8 @@ import "./_login.scss";
 import Button from "../Common/Button";
 import Input from "../Common/Input";
 
-// utils
-import { BASE_URI } from "../../utils/constants";
+// actions
+import { userLogin } from "./loginActions";
 
 /**
  * @desc the login page
@@ -24,24 +24,13 @@ const Login = () => {
   /**
    * @desc handles form submission
    */
-  const submitForm = async (event) => {
+  const submitForm = (event) => {
     event.preventDefault();
     const loginDetails = { email, password };
-    const response = await loginRequest(loginDetails);
+    const response = userLogin(loginDetails);
     setEmail("");
     setPassword("");
-  };
-
-  /**
-   * @desc makes api calls with request
-   */
-  const loginRequest = async (body) => {
-    try {
-      let apiResponse = await http.post(`${BASE_URI}/auth`, body);
-      return apiResponse;
-    } catch (error) {
-      return error;
-    }
+    console.log("It worked", response);
   };
 
   /**
