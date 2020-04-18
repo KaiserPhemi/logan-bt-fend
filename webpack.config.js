@@ -10,12 +10,14 @@ const prodMode = process.env.NODE_ENV === "production";
 
 // configurations
 module.exports = {
+  devServer: { historyApiFallback: true },
   mode: prodMode ? "production" : "development",
   entry: { app: "./src/index.js" },
   devtool: prodMode ? false : "cheap-source-map",
   output: {
     filename: prodMode ? "[name].[contenthash:8].min.js" : "[name].js",
     path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
   },
   module: {
     rules: [
