@@ -23,11 +23,14 @@ const loginActionCreator = (payload) => {
  */
 const userLogin = (loginData) => async (dispatch) => {
   console.log("we got to action", loginData);
+  dispatch({
+    type: USER_LOGIN_PENDING,
+  });
   try {
     let apiResponse = await http.post(`${BASE_URI}/auth`, loginData);
-    dispatch(loginActionCreator(apiResponse));
+    dispatch({ type: USER_LOGIN_PENDING, apiResponse });
   } catch (error) {
-    return error;
+    dispatch({ type: USER_LOGIN_FAILURE, error });
   }
 };
 
