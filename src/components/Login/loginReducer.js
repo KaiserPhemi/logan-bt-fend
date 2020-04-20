@@ -14,16 +14,14 @@ import initialState from "../../store/initialState";
  * @param {object} action
  */
 const loginReducer = (state = initialState, action) => {
-  // console.log("Reducer", action);
   switch (action.type) {
     case USER_LOGIN_FAILURE:
       return state;
     case USER_LOGIN_SUCCESS:
-      const { data } = action;
+      const { data } = action.payload;
       console.log("Reducer", data);
       return Object.assign({}, ...state, {
         isUserLoggedIn: true,
-        loginMessage: data.message,
       });
     case USER_LOGIN_PENDING:
       return state;

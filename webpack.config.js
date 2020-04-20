@@ -13,7 +13,7 @@ module.exports = {
   devServer: { historyApiFallback: true },
   mode: prodMode ? "production" : "development",
   entry: { app: "./src/index.js" },
-  devtool: prodMode ? false : "eval-cheap-module-source-map",
+  devtool: prodMode ? false : "source-map",
   output: {
     filename: prodMode ? "[name].[contenthash:8].min.js" : "[name].js",
     path: path.resolve(__dirname, "dist"),

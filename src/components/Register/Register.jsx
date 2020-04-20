@@ -1,5 +1,6 @@
 // react libraries
 import React, { useState } from "react";
+import { connect } from "react-redux";
 
 // styles
 import "./_register.scss";
@@ -8,10 +9,13 @@ import "./_register.scss";
 import Button from "../Common/Button";
 import Input from "../Common/Input";
 
+// actions
+import { userSignUp } from "./signUpActions";
+
 /**
  * @desc
  */
-const Register = () => {
+const Register = ({ userSignUp }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -21,9 +25,10 @@ const Register = () => {
    * @desc handles submission of form
    * @param {object} evt
    */
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
     const signUpData = { firstName, lastName, email, password };
+    const signUpResponse = await userSignUp(signUpData);
     setFirstName("");
     setLastName("");
     setEmail("");
@@ -68,4 +73,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default connect(null, { userSignUp })(Register);

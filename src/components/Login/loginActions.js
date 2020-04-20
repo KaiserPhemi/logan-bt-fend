@@ -23,10 +23,9 @@ const userLogin = (loginData) => async (dispatch) => {
   dispatch(loginPending());
   try {
     let { data } = await http.post(`${BASE_URI}/auth`, loginData);
-    dispatch({ type: USER_LOGIN_SUCCESS, data });
+    dispatch(loginSuccess(data));
   } catch (error) {
-    console;
-    dispatch({ type: USER_LOGIN_FAILURE, data: error });
+    dispatch(loginFailure());
   }
 };
 

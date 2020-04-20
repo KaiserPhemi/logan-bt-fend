@@ -5,8 +5,5 @@ import thunk from "redux-thunk";
 // reducers
 import rootReducer from "./rootReducer";
 
-// initial state
-import initialState from "./initialState";
-
 //store
 export default configureStore({ reducer: rootReducer });

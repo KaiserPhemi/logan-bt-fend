@@ -1,9 +1,7 @@
 // initial state
 const initialState = {
-  login: {
-    isUserLoggedIn: false,
-    loginMessage: "",
-  },
+  isUserLoggedIn: false,
+  loginMessage: "",
 };
 
 export default initialState;
