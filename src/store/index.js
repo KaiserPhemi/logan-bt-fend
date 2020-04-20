@@ -1,11 +1,12 @@
 // redux libraries
-import { createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
+import thunk from "redux-thunk";
 
 // reducers
 import rootReducer from "./rootReducer";
 
+// initial state
+import initialState from "./initialState";
+
 //store
-export default createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+export default configureStore({ reducer: rootReducer });

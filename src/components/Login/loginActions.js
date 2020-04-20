@@ -1,5 +1,6 @@
 // third-party liraries
 import http from "axios";
+import { createAction } from "@reduxjs/toolkit";
 
 // constant url
 import { BASE_URI } from "../../utils/constants";
@@ -9,28 +10,23 @@ export const USER_LOGIN_PENDING = "USER_LOGIN_PENDING";
 export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
 export const USER_LOGIN_FAILURE = "USER_LOGIN_FAILURE";
 
-/**
- * @desc action creator
- * @param {object} payload
- */
-const loginActionCreator = (payload) => {
-  return { type: USER_LOGIN_PENDING, payload };
-};
+// action creators
+const loginSuccess = createAction(USER_LOGIN_SUCCESS);
+const loginPending = createAction(USER_LOGIN_PENDING);
+const loginFailure = createAction(USER_LOGIN_FAILURE);
 
 /**
  * @desc action
  * @param {object} loginData
  */
 const userLogin = (loginData) => async (dispatch) => {
-  console.log("we got to action", loginData);
-  dispatch({
-    type: USER_LOGIN_PENDING,
-  });
+  dispatch(loginPending());
   try {
-    let apiResponse = await http.post(`${BASE_URI}/auth`, loginData);
-    dispatch({ type: USER_LOGIN_PENDING, apiResponse });
+    let { data } = await http.post(`${BASE_URI}/auth`, loginData);
+    dispatch({ type: USER_LOGIN_SUCCESS, data });
   } catch (error) {
-    dispatch({ type: USER_LOGIN_FAILURE, error });
+    console;
+    dispatch({ type: USER_LOGIN_FAILURE, data: error });
   }
 };
 

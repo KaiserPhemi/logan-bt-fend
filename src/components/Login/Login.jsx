@@ -1,8 +1,6 @@
 // react libraries
 import React, { useState } from "react";
-
-// third-party libraries libraries
-import http from "axios";
+import { connect } from "react-redux";
 
 // styles
 import "./_login.scss";
@@ -17,20 +15,21 @@ import { userLogin } from "./loginActions";
 /**
  * @desc the login page
  */
-const Login = () => {
+const Login = ({ userLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [msgPrompt, setPrompt] = useState("");
 
   /**
    * @desc handles form submission
    */
-  const submitForm = (event) => {
+  const submitForm = async (event) => {
     event.preventDefault();
     const loginDetails = { email, password };
-    const response = userLogin(loginDetails);
+    const response = await userLogin(loginDetails);
     setEmail("");
     setPassword("");
-    console.log("It worked", response);
+    console.log("Log in: ", response);
   };
 
   /**
@@ -57,4 +56,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default connect(null, { userLogin })(Login);

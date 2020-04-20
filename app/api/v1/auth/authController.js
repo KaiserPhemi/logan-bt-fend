@@ -6,7 +6,7 @@ const authController = {
     const { body } = req;
 
     return res.status(200).send({
-      message: "User login",
+      message: "User logged in successfully.",
       data: body,
     });
   },

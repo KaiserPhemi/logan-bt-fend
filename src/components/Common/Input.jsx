@@ -9,15 +9,24 @@ import "./_input.scss";
  * @desc reusable input field
  * @param {object} param0
  */
-const Input = ({ labelText, inputType, inputName, onChange, value }) => {
+const Input = ({
+  labelText,
+  inputType,
+  inputName,
+  onChange,
+  value,
+  placeHolder,
+}) => {
   return (
     <div className="input-field">
       <label htmlFor={inputName}>{labelText}</label>
       <input
+        placeholder={placeHolder}
         value={value}
         onChange={onChange}
         name={inputName}
         type={inputType}
+        minLength={`${inputType === "password" ? 8 : ""}`}
         required
       />
     </div>
@@ -30,6 +39,7 @@ Input.propTypes = {
   inputType: PropTypes.string.isRequired,
   inputName: PropTypes.string.isRequired,
   onChange: PropTypes.func,
+  placeHolder: PropTypes.string,
   value: PropTypes.string.isRequired,
 };
 

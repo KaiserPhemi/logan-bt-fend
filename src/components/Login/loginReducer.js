@@ -5,17 +5,26 @@ import {
   USER_LOGIN_FAILURE,
 } from "./loginActions";
 
-const initialState = {
-  isUserLoggedIn: false,
-};
+// initial state
+import initialState from "../../store/initialState";
 
-const loginReducer = (state = { ...initialState }, action) => {
-  console.log("We are in reducer", action);
+/**
+ * @desc login reducer
+ * @param {object} state
+ * @param {object} action
+ */
+const loginReducer = (state = initialState, action) => {
+  // console.log("Reducer", action);
   switch (action.type) {
     case USER_LOGIN_FAILURE:
-      return;
+      return state;
     case USER_LOGIN_SUCCESS:
-      return [...state, Object.assign({}, { isUserLoggedIn: true })];
+      const { data } = action;
+      console.log("Reducer", data);
+      return Object.assign({}, ...state, {
+        isUserLoggedIn: true,
+        loginMessage: data.message,
+      });
     case USER_LOGIN_PENDING:
       return state;
     default:
