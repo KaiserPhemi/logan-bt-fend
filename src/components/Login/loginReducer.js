@@ -6,7 +6,10 @@ import {
 } from "./loginActions";
 
 // initial state
-import initialState from "../../store/initialState";
+const initialState = {
+  isUserLoggedIn: false,
+  loginMessage: "",
+};
 
 /**
  * @desc login reducer
