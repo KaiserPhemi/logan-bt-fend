@@ -29,6 +29,7 @@ const Register = ({ userSignUp }) => {
     evt.preventDefault();
     const signUpData = { firstName, lastName, email, password };
     const signUpResponse = await userSignUp(signUpData);
+    console.log(signUpResponse);
     setFirstName("");
     setLastName("");
     setEmail("");

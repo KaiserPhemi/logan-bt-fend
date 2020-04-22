@@ -16,7 +16,6 @@ const userSignUpReducer = (state = {}, action) => {
       return state;
     case REGISTRATION_SUCCESSFUL:
       const { createdUser } = action.payload;
-      console.log("reducer", createdUser);
       return Object.assign({}, ...state, { user: { ...createdUser } });
     case REGISTRATION_FAILURE:
       return state;
