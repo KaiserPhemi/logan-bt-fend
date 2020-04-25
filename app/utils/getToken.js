@@ -16,3 +16,5 @@ const userToken = (user) => {
     { expiresIn: "24h" }
   );
 };
+
+module.exports = { userToken };

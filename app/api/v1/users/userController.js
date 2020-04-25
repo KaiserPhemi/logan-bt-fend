@@ -4,6 +4,10 @@ const { hashPassword } = require("../../../utils/secureHash");
 // model
 const User = require("./userModel");
 
+// utils
+const { userToken } = require("../../../utils/getToken");
+const { formatUserData } = require("../../../utils/formatData");
+
 /**
  * @desc user controller
  */
@@ -19,9 +23,13 @@ const userController = {
     const userData = { ...body, password: hashedPwd };
     try {
       const createdUser = await User.create({ ...userData });
+      const token = userToken(createdUser);
+      const user = formatUserData(createdUser);
+
       return res.status(201).send({
         message: "User created successfully.",
-        createdUser,
+        user,
+        token,
       });
     } catch (error) {
       return res.status(500).send({
