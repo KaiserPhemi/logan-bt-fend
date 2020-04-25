@@ -1,9 +1,12 @@
 // utils
-const { userSignUpSchema } = require("../../../utils/dataValidator");
 const { hashPassword } = require("../../../utils/secureHash");
 
 // model
 const User = require("./userModel");
+
+// utils
+const { userToken } = require("../../../utils/getToken");
+const { formatUserData } = require("../../../utils/formatData");
 
 /**
  * @desc user controller
@@ -16,38 +19,22 @@ const userController = {
    */
   async createUser(req, res) {
     const { body } = req;
-    const signUpData = await userSignUpSchema.validate({ ...body });
-
-    // checks for error in data validation
-    if (signUpData.error) {
-      const { error } = signUpData;
-      const details = error.details[0].message;
-      return res.status(400).send({
-        message: "An error occured while validating data",
-        details
-      });
-    }
-    const { value } = signUpData;
-    const existingUser = await User.findOne({ email: value.email });
-
-    // checks if user exist already
-    if (existingUser) {
-      return res.status(400).send({
-        message: `User with email '${existingUser.email}' already exist.`
-      });
-    }
-    const hashedPwd = await hashPassword(value.password);
-    const userData = { ...value, password: hashedPwd };
+    const hashedPwd = await hashPassword(body.password);
+    const userData = { ...body, password: hashedPwd };
     try {
       const createdUser = await User.create({ ...userData });
+      const token = userToken(createdUser);
+      const user = formatUserData(createdUser);
+
       return res.status(201).send({
-        message: "User created",
-        createdUser
+        message: "User created successfully.",
+        user,
+        token,
       });
     } catch (error) {
       return res.status(500).send({
-        message: "An error occured",
-        error
+        message: "An error occured.",
+        error,
       });
     }
   },
@@ -62,12 +49,12 @@ const userController = {
       const allUsers = await User.find();
       return res.status(200).send({
         message: "All users retrieved.",
-        users: allUsers
+        users: allUsers,
       });
     } catch (error) {
       return res.status(500).send({
         message: "An error occured.",
-        error
+        error,
       });
     }
   },
@@ -84,17 +71,17 @@ const userController = {
       const updatedUser = await User.findByIdAndUpdate(id, body, { new: true });
       if (!updatedUser) {
         return res.status(404).send({
-          message: "User with the details does not exist"
+          message: "User with the details does not exist",
         });
       }
       return res.status(201).send({
         message: "User details updated",
-        user: updatedUser
+        user: updatedUser,
       });
     } catch (error) {
       return res.status(500).send({
         message: "User details not updated.",
-        error
+        error,
       });
     }
   },
@@ -104,7 +91,7 @@ const userController = {
    * @param {object} req
    * @param {object} res
    */
-  async deleteUser(req, res) {}
+  async deleteUser(req, res) {},
 };
 
 module.exports = userController;

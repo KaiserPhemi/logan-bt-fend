@@ -1,8 +1,14 @@
-// node modules
+// node libraries
 const express = require("express");
 
 // controllers
 const userController = require("./userController");
+
+// middlewares
+const {
+  validateFormData,
+  checkExistingUser,
+} = require("../../../middlewares/userCheck");
 
 // router
 const userRouter = express.Router();
@@ -11,7 +17,7 @@ const userRouter = express.Router();
 userRouter
   .route("/")
   .get(userController.getUsers)
-  .post(userController.createUser);
+  .post(validateFormData, checkExistingUser, userController.createUser);
 userRouter
   .route("/:id")
   .put(userController.updateUser)
