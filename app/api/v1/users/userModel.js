@@ -1,4 +1,4 @@
-// dependencies
+// third-party libraries
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
@@ -6,20 +6,20 @@ const { Schema, model } = mongoose;
 const userModel = new Schema({
   firstName: {
     type: String,
-    required: true
+    required: true,
   },
   lastName: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
-    required: true
+    required: true,
   },
   password: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 });
 
 // model
