@@ -1,6 +1,7 @@
 // react libraries
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 // styles
 import "./_register.scss";
@@ -33,6 +34,9 @@ const Register = ({ userSignUp }) => {
     setLastName("");
     setEmail("");
     setPassword("");
+    history.push("/dashboard/");
+    console.log("we got hist", history);
+    // return <Redirect to="/dashboard/" />;
   };
 
   /**
