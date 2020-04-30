@@ -22,7 +22,7 @@ const Input = ({
       <label htmlFor={inputName}>{labelText}</label>
       <input
         placeholder={placeHolder}
-        value={value}
+        value={value.trim()}
         onChange={onChange}
         name={inputName}
         type={inputType}
