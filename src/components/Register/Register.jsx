@@ -1,7 +1,7 @@
 // react libraries
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 
 // styles
 import "./_register.scss";
@@ -34,9 +34,7 @@ const Register = ({ userSignUp }) => {
     setLastName("");
     setEmail("");
     setPassword("");
-    history.push("/dashboard/");
-    console.log("we got hist", history);
-    // return <Redirect to="/dashboard/" />;
+    return <Redirect to="/dashboard/" />;
   };
 
   /**
@@ -77,4 +75,4 @@ const Register = ({ userSignUp }) => {
   );
 };
 
-export default connect(null, { userSignUp })(Register);
+export default withRouter(connect(null, { userSignUp })(Register));
