@@ -1,6 +1,7 @@
 // react libraries
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 // styles
 import "./_register.scss";
@@ -20,6 +21,7 @@ const Register = ({ userSignUp }) => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isRedirect, setRedirect] = useState(false);
 
   /**
    * @desc handles submission of form
@@ -33,12 +35,15 @@ const Register = ({ userSignUp }) => {
     setLastName("");
     setEmail("");
     setPassword("");
+    setRedirect(true);
   };
 
   /**
    * @desc renders component
    */
-  return (
+  return isRedirect ? (
+    <Redirect to="/dashboard" />
+  ) : (
     <form onSubmit={handleSubmit} className="signup-form">
       <Input
         value={firstName}

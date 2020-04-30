@@ -11,6 +11,7 @@ import NavigationBar from "../NavigationBar/NavigationBar";
 import Footer from "../Footer/Footer";
 import LandingPage from "../LandingPage/LandingPage";
 import Register from "../Register/Register";
+import Dashboard from "../Dashboard/Dashboard";
 
 /**
  * @desc entry point for app
@@ -24,6 +25,7 @@ const App = () => {
           <Route exact path="/" component={LandingPage} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/dashboard" component={Dashboard} />
         </Switch>
         <Footer />
       </div>
