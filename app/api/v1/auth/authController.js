@@ -4,6 +4,8 @@
 const authController = {
   async loginUser(req, res) {
     const { body } = req;
+    try {
+    } catch (error) {}
 
     return res.status(200).send({
       message: "User logged in successfully.",
