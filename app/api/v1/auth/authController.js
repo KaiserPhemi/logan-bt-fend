@@ -1,9 +1,20 @@
+// utils
+const { checkPassword } = require("../../../utils/secureHash");
+
 /**
  * @desc
  */
 const authController = {
+  /**
+   * @desc logins a user
+   * @param {object} req
+   * @param {object} res
+   */
   async loginUser(req, res) {
-    const { body } = req;
+    const { email, password } = req.body;
+
+    // verify password
+    //
     try {
     } catch (error) {}
 
