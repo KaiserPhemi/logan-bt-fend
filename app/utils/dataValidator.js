@@ -12,11 +12,11 @@ const dataValidator = {
     firstName: Joi.string().alphanum().min(3).max(50).required(),
     lastName: Joi.string().alphanum().min(3).max(50).required(),
     email: Joi.string().email({ minDomainSegments: 2 }),
-    password: Joi.string().min(8).pattern(new RegExp("^wW")),
+    password: Joi.string().min(8),
   }),
   loginSchema: Joi.object({
     email: Joi.string().email({ minDomainSegments: 2 }),
-    password: Joi.string().min(8).pattern(new RegExp("^wW")),
+    password: Joi.string().min(8),
   }),
 };
 

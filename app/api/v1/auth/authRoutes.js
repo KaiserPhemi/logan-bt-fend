@@ -14,8 +14,6 @@ const {
 const authRouter = express.Router();
 
 // routes
-authRouter
-  .route("/")
-  .post(validateLoginData, checkExistingUser, authController.loginUser);
+authRouter.route("/").post(validateLoginData, authController.loginUser);
 
 module.exports = authRouter;
