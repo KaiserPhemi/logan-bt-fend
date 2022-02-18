@@ -6,7 +6,7 @@
     "coverage": "jest && coveralls < coverage/lcov.info",
     "build": "rm -rf dist & NODE_ENV=production webpack --mode production",
     "start": "NODE_ENV=production node server.js",
-    "dev": "NODE_ENV=development webpack-dev-server src/index.js & nodemon --watch app server.js"
+    "dev": "NODE_ENV=development webpack-dev-server src/index.js"
   },
   "repository": "git@github.com:KaiserPhemi/logan.git",
   "author": "KaiserPhemi <kaiser.phemi@protonmail.ch>",
